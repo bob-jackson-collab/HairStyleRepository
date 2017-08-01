@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+def retrofitVersion = '2.2.0'
+def RxJavaVersion = '2.1.2'
+def RxAndroidVersion = '2.0.1'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    dataBinding{
+        enabled = true;
+    }
+
+    defaultConfig {
+        applicationId "com.hair.hairstyle"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs{
+        config {
+            keyAlias 'hair'
+            keyPassword 'hairstyle'
+            storeFile file('hairstyle.jks')
+            storePassword 'hairstyle'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+
+
+
+//    productFlavors {
+//        Test {
+//
+//        }
+//
+//        Product {
+//
+//        }
+//    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    //Retrofit2所需要的包
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    //ConverterFactory的Gson依赖包
+    compile "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
+    compile "io.reactivex.rxjava2:rxjava:$RxJavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$RxAndroidVersion"
+    compile 'com.j256.ormlite:ormlite-android:4.48'
+    compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/IndoorscapeAlbumPlugin.jar')
+}
