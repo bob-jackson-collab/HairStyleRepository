@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hair.hairstyle.customview.CoordinatorMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
+
+
+    <include layout="@layout/menu_function" />
+
+    <com.hair.hairstyle.customview.MainView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Content" />
+    </com.hair.hairstyle.customview.MainView>
+
+
+</com.hair.hairstyle.customview.CoordinatorMenu>
