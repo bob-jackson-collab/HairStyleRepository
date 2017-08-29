@@ -3,18 +3,16 @@ package com.hair.hairstyle.base;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
-import android.view.WindowManager;
 
 import com.hair.hairstyle.net.NetChangeObserver;
 import com.hair.hairstyle.net.NetStateReceiver;
 import com.hair.hairstyle.net.NetUtils;
-import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.zr.library.StatusBarManager;
 
 /**
  * Created by yunshan on 17/7/28.
@@ -53,16 +51,7 @@ public abstract class BaseActivity<V, P extends BasePresenter<V>> extends AppCom
     }
 
     private void setStatusBarColor(int color) {
-        //如果Api版本大于19的
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-
-            SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
-            systemBarTintManager.setNavigationBarTintEnabled(false);
-            systemBarTintManager.setStatusBarTintEnabled(true);
-            systemBarTintManager.setStatusBarTintColor(color);
-        }
+        StatusBarManager.getsInstance().setColor(this, color);
     }
 
     private void setBaseConfig() {
@@ -83,8 +72,8 @@ public abstract class BaseActivity<V, P extends BasePresenter<V>> extends AppCom
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //加入activity管理容器
 //        AppManager.getAppManager().addActivity(this);
-        //设置状态栏的颜色 默认是红色
-        setStatusBarColor(Color.RED);
+        //设置状态栏的颜色 默认是透明的
+        setStatusBarColor(Color.TRANSPARENT);
         //设置屏幕只能竖直
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }

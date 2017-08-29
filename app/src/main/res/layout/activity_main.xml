@@ -1,27 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.hair.hairstyle.customview.CoordinatorMenu xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <include layout="@layout/menu_function" />
-
-    <com.hair.hairstyle.customview.MainView
+    <com.hair.hairstyle.customview.CoordinatorMenu
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent">
 
-        <TextView
+
+        <include layout="@layout/menu_function" />
+
+        <com.hair.hairstyle.customview.MainView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Content" />
-    </com.hair.hairstyle.customview.MainView>
+            android:layout_height="match_parent">
 
 
-</com.hair.hairstyle.customview.CoordinatorMenu>
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_one"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="one"
+                    android:text="第一个" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#EEE" />
+
+                <TextView
+                    android:id="@+id/tv_two"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="two"
+                    android:text="第二个" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#EEE" />
+
+                <TextView
+                    android:id="@+id/tv_three"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="three"
+                    android:text="第三个" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_layout"
+                android:layout_below="@id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.hair.hairstyle.customview.MainView>
+
+    </com.hair.hairstyle.customview.CoordinatorMenu>
+</layout>
