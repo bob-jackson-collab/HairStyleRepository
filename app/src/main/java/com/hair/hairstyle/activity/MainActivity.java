@@ -73,7 +73,7 @@ public class MainActivity extends BaseActivity {
     private void showFragment() {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         if (!mFragments.get(currentIndex).isAdded()) {
-            fragmentTransaction.hide(mCurrentFragment).add(R.id.frame_layout, mFragments.get(currentIndex), mFragments.get(currentIndex).getClass().getSimpleName());
+            fragmentTransaction.add(R.id.frame_layout, mFragments.get(currentIndex), mFragments.get(currentIndex).getClass().getSimpleName());
         } else {
             fragmentTransaction.hide(mCurrentFragment).show(mFragments.get(currentIndex));
         }
