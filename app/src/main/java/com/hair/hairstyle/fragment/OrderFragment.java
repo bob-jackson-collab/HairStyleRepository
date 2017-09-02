@@ -1,6 +1,7 @@
 package com.hair.hairstyle.fragment;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -10,18 +11,20 @@ import android.view.ViewGroup;
 
 import com.hair.hairstyle.R;
 import com.hair.hairstyle.base.BaseFragment;
+import com.hair.hairstyle.databinding.FragmentOrderBinding;
 
 /**
  * Created by yunshan on 17/8/8.
  */
 
-public class Fragment2 extends BaseFragment {
+public class OrderFragment extends BaseFragment {
 
-    public static final String TAG = Fragment2.class.getSimpleName();
+    public static final String TAG = OrderFragment.class.getSimpleName();
+    private FragmentOrderBinding mBinding;
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.fragment2;
+        return R.layout.fragment_order;
     }
 
     @Override
@@ -29,6 +32,12 @@ public class Fragment2 extends BaseFragment {
 
     }
 
+    @Override
+    protected View getFragmentView(LayoutInflater inflater, @Nullable ViewGroup container, int layoutId) {
+        mBinding = DataBindingUtil.inflate(inflater,layoutId,container,false);
+        return mBinding.getRoot();
+
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -39,14 +48,7 @@ public class Fragment2 extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "onAttach");
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.e(TAG, "onCreateView");
-        return super.onCreateView(inflater, container, savedInstanceState);
+        Log.e(TAG, "onCreate");
     }
 
     @Override

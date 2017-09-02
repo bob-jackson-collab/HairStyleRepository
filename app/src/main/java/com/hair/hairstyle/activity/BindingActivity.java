@@ -27,6 +27,7 @@ import io.reactivex.Observable;
 
 public class BindingActivity extends AppCompatActivity {
 
+
     private static final String TAG = "BindingActivity";
     private LocalService mService;
     private boolean mBound;

@@ -10,11 +10,10 @@ import android.view.View;
 import com.hair.hairstyle.R;
 import com.hair.hairstyle.base.BaseActivity;
 import com.hair.hairstyle.base.BaseFragment;
-import com.hair.hairstyle.base.BasePresenter;
 import com.hair.hairstyle.databinding.ActivityMainBinding;
-import com.hair.hairstyle.fragment.Fragment1;
-import com.hair.hairstyle.fragment.Fragment2;
-import com.hair.hairstyle.fragment.Fragment3;
+import com.hair.hairstyle.fragment.HairFragment;
+import com.hair.hairstyle.fragment.OrderFragment;
+import com.hair.hairstyle.fragment.PersonalFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +41,7 @@ public class MainActivity extends BaseActivity {
         } else {
             initFragment();
         }
-
-
+        showFragment();
     }
 
     public void one(View view) {
@@ -63,63 +61,23 @@ public class MainActivity extends BaseActivity {
 
     private void initFragment() {
         mFragments = new ArrayList<>();
-        Fragment1 fragment1 = new Fragment1();
-        Fragment2 fragment2 = new Fragment2();
-        Fragment3 fragment3 = new Fragment3();
+        HairFragment fragment1 = new HairFragment();
+        OrderFragment fragment2 = new OrderFragment();
+        PersonalFragment fragment3 = new PersonalFragment();
         mFragments.add(fragment1);
         mFragments.add(fragment2);
         mFragments.add(fragment3);
         mCurrentFragment = fragment1;
-        showFragment();
     }
 
     private void showFragment() {
-
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-
         if (!mFragments.get(currentIndex).isAdded()) {
             fragmentTransaction.hide(mCurrentFragment).add(R.id.frame_layout, mFragments.get(currentIndex), mFragments.get(currentIndex).getClass().getSimpleName());
-
         } else {
             fragmentTransaction.hide(mCurrentFragment).show(mFragments.get(currentIndex));
         }
-
         fragmentTransaction.commit();
-
-        mCurrentFragment = mFragments.get(currentIndex);
-    }
-
-    private void restoreFragment(Bundle savedInstanceState) {
-
-        currentIndex = savedInstanceState.getInt(STATE_FRAGMENT_NAME, 0);
-
-        if (mFragments != null) {
-            mFragments.removeAll(mFragments);
-        } else {
-            mFragments = new ArrayList<>();
-        }
-
-        mFragments.add(
-                mFragmentManager.findFragmentByTag(Fragment1.class.getSimpleName()) != null ?
-                        (Fragment1) mFragmentManager.findFragmentByTag(Fragment1.class.getSimpleName()) : new Fragment1());
-        mFragments.add(
-                mFragmentManager.findFragmentByTag(Fragment2.class.getSimpleName()) != null ?
-                        (Fragment2) mFragmentManager.findFragmentByTag(Fragment2.class.getSimpleName()) : new Fragment2());
-        mFragments.add(
-                mFragmentManager.findFragmentByTag(Fragment3.class.getSimpleName()) != null ?
-                        (Fragment3) mFragmentManager.findFragmentByTag(Fragment1.class.getSimpleName()) : new Fragment3());
-
-        FragmentTransaction beginTransaction = mFragmentManager.beginTransaction();
-        for (int i = 0; i < mFragments.size(); i++) {
-
-            if (i == currentIndex) {
-                beginTransaction.show(mFragments.get(currentIndex));
-            } else {
-                beginTransaction.hide(mFragments.get(i));
-            }
-        }
-
-        beginTransaction.commit();
         mCurrentFragment = mFragments.get(currentIndex);
     }
 
@@ -129,8 +87,34 @@ public class MainActivity extends BaseActivity {
         super.onSaveInstanceState(outState);
     }
 
-    @Override
-    public BasePresenter createPresenter() {
-        return null;
+
+    //恢复fragment的状态
+    private void restoreFragment(Bundle savedInstanceState) {
+        currentIndex = savedInstanceState.getInt(STATE_FRAGMENT_NAME, 0);
+        if (mFragments != null) {
+            mFragments.removeAll(mFragments);
+        } else {
+            mFragments = new ArrayList<>();
+        }
+        mFragments.add(
+                mFragmentManager.findFragmentByTag(HairFragment.class.getSimpleName()) != null ?
+                        (HairFragment) mFragmentManager.findFragmentByTag(HairFragment.class.getSimpleName()) : new HairFragment());
+        mFragments.add(
+                mFragmentManager.findFragmentByTag(OrderFragment.class.getSimpleName()) != null ?
+                        (OrderFragment) mFragmentManager.findFragmentByTag(OrderFragment.class.getSimpleName()) : new OrderFragment());
+        mFragments.add(
+                mFragmentManager.findFragmentByTag(PersonalFragment.class.getSimpleName()) != null ?
+                        (PersonalFragment) mFragmentManager.findFragmentByTag(PersonalFragment.class.getSimpleName()) : new PersonalFragment());
+
+        FragmentTransaction beginTransaction = mFragmentManager.beginTransaction();
+        for (int i = 0; i < mFragments.size(); i++) {
+            if (i == currentIndex) {
+                beginTransaction.show(mFragments.get(currentIndex));
+            } else {
+                beginTransaction.hide(mFragments.get(i));
+            }
+        }
+        beginTransaction.commit();
+        mCurrentFragment = mFragments.get(currentIndex);
     }
 }

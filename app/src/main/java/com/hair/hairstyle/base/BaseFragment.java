@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,15 +18,9 @@ import java.lang.reflect.Field;
 
 public abstract class BaseFragment extends Fragment {
 
-    private Activity mContext;
+    protected Activity mContext;
     private boolean mIsVisible;
     private boolean mIsPrepare;
-
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -46,19 +39,15 @@ public abstract class BaseFragment extends Fragment {
         //设置强制竖屏展示
         mContext.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if (0 != getContentViewLayoutID()) {
-            View inflateView = inflater.inflate(getContentViewLayoutID(), container, false);
+            View inflateView = getFragmentView(inflater,container,getContentViewLayoutID());
             // 解决点击穿透问题
-            inflateView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    return true;
-                }
-            });
-            return inflater.inflate(getContentViewLayoutID(), null);
+            inflateView.setOnTouchListener((v, event) -> true);
+            return inflateView;
         } else {
-            return super.onCreateView(inflater, container, savedInstanceState);
+            throw new IllegalStateException("no layout id");
         }
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -126,4 +115,6 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getContentViewLayoutID();
 
     protected abstract void initViewsAndEvents(View view);
+
+    protected abstract View getFragmentView(LayoutInflater inflater, @Nullable ViewGroup container,int layoutId);
 }

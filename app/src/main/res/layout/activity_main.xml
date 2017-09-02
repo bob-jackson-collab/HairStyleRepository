@@ -1,70 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.hair.hairstyle.customview.CoordinatorMenu
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent">
+        android:layout_height="match_parent">
 
-
-        <include layout="@layout/menu_function" />
-
-        <com.hair.hairstyle.customview.MainView
+        <LinearLayout
+            android:id="@+id/linear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/tv_one"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="one"
+                android:text="首页" />
 
-            <LinearLayout
-                android:id="@+id/linear"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:orientation="horizontal">
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#EEE" />
 
-                <TextView
-                    android:id="@+id/tv_one"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="one"
-                    android:text="第一个" />
+            <TextView
+                android:id="@+id/tv_two"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="two"
+                android:text="订单" />
 
-                <TextView
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#EEE" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#EEE" />
 
-                <TextView
-                    android:id="@+id/tv_two"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="two"
-                    android:text="第二个" />
+            <TextView
+                android:id="@+id/tv_three"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="three"
+                android:text="个人" />
 
-                <TextView
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#EEE" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_three"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="three"
-                    android:text="第三个" />
-
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/frame_layout"
-                android:layout_below="@id/linear"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.hair.hairstyle.customview.MainView>
-
-    </com.hair.hairstyle.customview.CoordinatorMenu>
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/linear" />
+    </RelativeLayout>
 </layout>

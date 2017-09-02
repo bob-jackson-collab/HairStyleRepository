@@ -24,7 +24,7 @@ public class ResultFun<T> implements Function<BaseEntity<T>, Observable<T>> {
         } else {
             StringBuilder sb = new StringBuilder();
             sb.append(code).append(":").append(tBaseEntity.getMessage());
-            return Observable.error(new MCException(sb.toString()));
+            return Observable.error(new HairException(sb.toString()));
         }
     }
 }

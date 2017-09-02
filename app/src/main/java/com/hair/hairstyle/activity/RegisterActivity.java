@@ -1,44 +1,35 @@
 package com.hair.hairstyle.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 
 import com.hair.hairstyle.R;
+import com.hair.hairstyle.activity.view.IRegisterView;
 import com.hair.hairstyle.base.BaseActivity;
-import com.hair.hairstyle.base.BasePresenter;
 import com.hair.hairstyle.databinding.ActivityRegisterBinding;
-import com.hair.hairstyle.net.ServiceGenerator;
-import com.hair.hairstyle.net.apiservice.LoginService;
-import com.hair.hairstyle.net.param.RegisterParam;
-import com.hair.hairstyle.net.result.RegisterResult;
-import com.hair.hairstyle.rx.ResultFun;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
+import com.hair.hairstyle.presenter.RegisterPresenter;
+import com.hair.hairstyle.presenter.RegisterPresenterImp;
 
 /**
  * Created by yunshan on 17/8/8.
  */
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity implements IRegisterView {
 
+    private static final String TAG = "RegisterActivity";
     private ActivityRegisterBinding mBinding;
-    private LoginService mService;
+    private RegisterPresenter mPresenter;
 
-    @Override
-    public BasePresenter createPresenter() {
-        return null;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-
-
+        mPresenter = new RegisterPresenterImp(this);
     }
 
     public void register(View view) {
@@ -46,27 +37,24 @@ public class RegisterActivity extends BaseActivity {
         String phone = mBinding.phone.getText().toString().trim();
         String password = mBinding.password.getText().toString().trim();
 
-        mService = ServiceGenerator.createService(LoginService.class, "http://192.168.63.240:8890/");
-        RegisterParam param = new RegisterParam();
-        param.setPhone(phone);
-        param.setName(name);
-        param.setPassword(password);
+        mPresenter.getRegisterResult(name, phone, password);
+    }
 
-        mService.register(param)
-                .flatMap(new ResultFun<RegisterResult>())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<RegisterResult>() {
-                    @Override
-                    public void accept(RegisterResult registerResult) throws Exception {
+    @Override
+    public void showLoading() {
+        Log.e(TAG, "showLoading: ");
+    }
 
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
+    @Override
+    public void hideLoading() {
+        Log.e(TAG, "hideLoading: ");
+    }
 
-                    }
-                });
-
+    @Override
+    public void showRegisterResult() {
+        Log.e(TAG, "showRegisterResult: " );
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

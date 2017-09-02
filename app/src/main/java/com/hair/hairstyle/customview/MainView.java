@@ -34,6 +34,20 @@ public class MainView extends RelativeLayout {
         if (mCoordinatorMenu.isOpened()) {
             return true;//拦截事件，不往下传递
         }
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                int width = getWidth();
+                int x = (int) event.getX();
+                if (x < width / 5) {
+                    return true;
+                }else{
+                    return false;
+                }
+
+        }
+
+
         return super.onInterceptTouchEvent(event);
     }
 

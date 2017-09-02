@@ -8,26 +8,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hair.hairstyle.R;
 import com.hair.hairstyle.base.BaseFragment;
 
 /**
  * Created by yunshan on 17/8/8.
  */
 
-public class Fragment1 extends BaseFragment {
+public class PersonalFragment extends BaseFragment {
 
-    public static final String TAG = Fragment1.class.getSimpleName();
+    public static final String TAG = PersonalFragment.class.getSimpleName();
+
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.fragment1;
+        return 0;
     }
 
     @Override
     protected void initViewsAndEvents(View view) {
 
     }
+
+    @Override
+    protected View getFragmentView(LayoutInflater inflater, @Nullable ViewGroup container, int layoutId) {
+       return null;
+    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -38,15 +44,9 @@ public class Fragment1 extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "onCreate");
+        Log.e(TAG, "onAttach");
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.e(TAG, "onCreateView");
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

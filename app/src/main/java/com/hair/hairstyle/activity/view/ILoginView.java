@@ -1,6 +1,6 @@
 package com.hair.hairstyle.activity.view;
 
-import com.hair.hairstyle.database.table.User;
+import com.hair.hairstyle.net.result.LoginResult;
 
 /**
  * Created by yunshan on 17/7/28.
@@ -8,5 +8,10 @@ import com.hair.hairstyle.database.table.User;
 
 public interface ILoginView {
 
-     void showUser(User user);
+    void showLoading();
+
+    void showUser(LoginResult user);
+
+    void hideLoading();
+
 }

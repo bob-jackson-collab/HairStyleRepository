@@ -25,7 +25,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="bmvnIjF5Y8R5Ysa1oBNDYPrYdRkRrwxb" />
 
-        <activity android:name="com.hair.hairstyle.activity.BindingActivity">
+        <activity android:name="com.hair.hairstyle.activity.MainActivity">
 
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -33,6 +33,8 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:name=".activity.LoginActivity" />
 
         <service
             android:name=".service.MessengerDemo"

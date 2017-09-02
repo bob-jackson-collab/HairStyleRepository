@@ -1,16 +1,10 @@
 package com.hair.hairstyle.presenter;
 
-import com.hair.hairstyle.activity.view.ILoginView;
-import com.hair.hairstyle.base.BasePresenter;
-
 /**
- * Created by yunshan on 17/7/28.
+ * Created by yunshan on 17/8/30.
  */
 
-public class LoginPresenter extends BasePresenter<ILoginView>{
+public interface LoginPresenter {
 
-    @Override
-    public void fetch() {
-
-    }
+    void getLoginResult(String username,String password);
 }

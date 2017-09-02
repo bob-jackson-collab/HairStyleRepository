@@ -4,13 +4,13 @@ package com.hair.hairstyle.rx;
  * Created by yunshan on 17/7/28.
  */
 
-public class MCException extends Throwable{
+public class HairException extends Throwable{
 
     private int code;
 
     private String message;
 
-    public MCException(String message) {
+    public HairException(String message) {
         super(message);
     }
 
