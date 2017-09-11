@@ -6,8 +6,9 @@ package com.hair.hairstyle.net.param;
 
 public class HairIndexParam {
 
-    private String latitude = "40";
-    private String longitude = "116";
+    private String latitude = "39.97104";
+    private String longitude = "116.39543";
+    private String offset = "0";
 
     public String getLatitude() {
         return latitude;
@@ -23,5 +24,13 @@ public class HairIndexParam {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public String getOffset() {
+        return offset;
+    }
+
+    public void setOffset(String offset) {
+        this.offset = offset;
     }
 }

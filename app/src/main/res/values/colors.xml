@@ -3,5 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorOrange">#FFe0b2</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorDark">#888888</color>
+    <color name="colorHair">#673ab7</color>
+    <color name="colorIndicator">#311b92</color>
+    <color name="colorTab">#03a9f4</color>
+    <color name="colorSelected">#c5cae9</color>
 </resources>

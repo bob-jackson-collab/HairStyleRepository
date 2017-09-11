@@ -76,7 +76,6 @@ public class HairFragment extends BaseFragment implements OnRefreshListener, OnL
     protected void initViewsAndEvents(View view) {
         settingHeaderView();
         mBinding.tvCity.setOnClickListener(v -> mPopup.showAsDropDown(v, -5, 0));
-        mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mAdapter = new HairStoreAdapter();
         mLRecyclerViewAdapter = new LRecyclerViewAdapter(mAdapter);
         mLRecyclerViewAdapter.addHeaderView(mHeaderView);
@@ -164,7 +163,7 @@ public class HairFragment extends BaseFragment implements OnRefreshListener, OnL
                     }
             );
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            textView.setPadding(5, 5, 5, 5);
+            textView.setPadding(10, 10, 10, 10);
             cityLinear.addView(textView);
         }
 

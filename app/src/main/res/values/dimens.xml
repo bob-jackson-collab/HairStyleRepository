@@ -16,4 +16,10 @@
     <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_350">350dp</dimen>
 
+
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_15">15sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
 </resources>

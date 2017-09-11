@@ -3,7 +3,6 @@ package com.hair.hairstyle.base;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -14,6 +13,7 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.hair.hairstyle.R;
 import com.hair.hairstyle.net.NetChangeObserver;
 import com.hair.hairstyle.net.NetStateReceiver;
 import com.hair.hairstyle.net.NetUtils;
@@ -72,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         //加入activity管理容器
 //        AppManager.getAppManager().addActivity(this);
         //设置状态栏的颜色 默认是透明的
-        setStatusBarColor(Color.TRANSPARENT);
+        setStatusBarColor(getResources().getColor(R.color.colorTab));
         //设置屏幕只能竖直
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
