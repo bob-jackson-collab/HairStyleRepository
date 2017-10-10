@@ -1,5 +1,6 @@
 package com.hair.hairstyle.property;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Environment;
 
@@ -7,6 +8,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.module.AppGlideModule;
@@ -33,6 +35,15 @@ public class HairGlideModule extends AppGlideModule {
     @Override
     public void applyOptions(Context context, GlideBuilder builder) {
 
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        //判断内存
+        if (activityManager != null) {
+            ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+            activityManager.getMemoryInfo(memoryInfo);
+            builder.setDecodeFormat(
+                    memoryInfo.lowMemory ? DecodeFormat.PREFER_RGB_565 : DecodeFormat.PREFER_ARGB_8888);
+        }
+
         String path;  //设置缓存的路径
         if (context.getExternalCacheDir() != null) {
             path = context.getExternalCacheDir().getAbsolutePath() + "hair_cache";
@@ -42,8 +53,8 @@ public class HairGlideModule extends AppGlideModule {
         final File cacheFile = new File(path);
         builder.setDiskCache(() -> DiskLruCacheWrapper.get(cacheFile, FILE_CACHE_SIZE));
 
-
         builder.setMemoryCache(new LruResourceCache(MEMORY_CACHE_SIZE));
+
 
 //        RequestOptions options = new RequestOptions();
 //        options.placeholder(new ColorDrawable(Color.RED))

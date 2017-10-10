@@ -9,7 +9,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
 
-    dataBinding{
+    dataBinding {
         enabled = true;
     }
 
@@ -54,7 +54,7 @@ android {
         }
     }
 
-    signingConfigs{
+    signingConfigs {
         config {
             keyAlias 'hair'
             keyPassword 'hairstyle'
@@ -70,8 +70,6 @@ android {
             signingConfig signingConfigs.config
         }
     }
-
-
 
 //    productFlavors {
 //        Test {
@@ -90,10 +88,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     //Retrofit2所需要的包
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
@@ -101,22 +95,28 @@ dependencies {
     compile "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
     compile "io.reactivex.rxjava2:rxjava:$RxJavaVersion"
     compile "io.reactivex.rxjava2:rxandroid:$RxAndroidVersion"
+    //    compile 'com.google.android.gms:play-services-gcm:9.4.0'
+    //    compile 'com.hyphenate:hyphenate-sdk:3.3.0'
+    //    compile 'com.google.dagger:dagger:2.7'
+    //    apt 'com.google.dagger:dagger-compiler:2.7'
+    //java注解
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/IndoorscapeAlbumPlugin.jar')
+
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
     compile 'com.github.bumptech.glide:glide:4.0.0'
     compile 'com.android.support:support-v4:25.3.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     compile 'com.github.pinguo-zhouwei:MZBannerView:v2.0.0'
-    //    compile 'com.google.android.gms:play-services-gcm:9.4.0'
-    //    compile 'com.hyphenate:hyphenate-sdk:3.3.0'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     compile 'com.zr.statusbarmanager:library:1.0.0-beta'
-    //    compile 'com.google.dagger:dagger:2.7'
-    //    apt 'com.google.dagger:dagger-compiler:2.7'
-    //java注解
     compile 'org.glassfish:javax.annotation:10.0-b28'
-    compile files('libs/BaiduLBS_Android.jar')
-    compile files('libs/IndoorscapeAlbumPlugin.jar')
     compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.github.dfqin:grantor:2.3.1'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
 }

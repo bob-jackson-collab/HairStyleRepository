@@ -13,50 +13,50 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
-        android:name="com.hair.hairstyle.HairApplication"
+        android:name=".HairApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="bmvnIjF5Y8R5Ysa1oBNDYPrYdRkRrwxb" />
 
-        <activity android:name="com.hair.hairstyle.activity.MainActivity"
-            android:windowSoftInputMode="adjustPan|">
-
+        <activity
+            android:name=".activity.DrawerActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".activity.LoginActivity" />
 
         <service
             android:name=".service.MessengerDemo"
             android:exported="true"
             android:process=":remote">
-            <!--<intent-filter>-->
-            <!--<action android:name="com.hair.hairstyle.messenger" />-->
-            <!--<category android:name="android.intent.category.DEFAULT" />-->
-            <!--</intent-filter>-->
-        </service>
 
+            <!-- <intent-filter> -->
+            <!-- <action android:name="com.hair.hairstyle.messenger" /> -->
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- </intent-filter> -->
+        </service>
         <service
             android:name=".service.AIDLService"
             android:exported="true"
             android:process=":aidl">
             <intent-filter>
                 <action android:name="com.hair.aidl" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-    </application>
 
+
+    </application>
 
 </manifest>
